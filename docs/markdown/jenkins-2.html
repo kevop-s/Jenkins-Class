@@ -1,0 +1,85 @@
+<section>
+    <h1> Día 2 </h1>
+</section>
+<section>
+    <h1>Configuración de usuarios</h1>
+</section>
+<section>
+    <h3>Ejercicio: Creación de usuarios</h3>
+    <aside class="notes">
+        - Habilitar creacion de usuarios
+
+        - Instalar Role-based Authorization Strategy (Seguridad/Role-Based Strategy)
+
+        - Crear usuario y asignarle un rol
+
+        - Crear un rol para poder ejecutar ciertos proyectos (Administracion de roles/item roles/pattern (regex de los jobs)) ---> Administrar roles/ agregar rol /item role
+    </aside>
+</section>
+</section>
+<section>
+    <h1>Credenciales en Jenkins</h1>
+</section>
+<section>
+    <h2>Tipos de credenciales</h2>
+    <ul>
+        <li>Secret text</li>
+        <li>Username and password</li>
+        <li>Secret file</li>
+        <li>SSH Username with private key</li>
+        <li>Certificate</li>
+        <li>Docker Host Certificate Authentication credentials.</li>        
+    </ul>
+    <aside class="notes">
+        Secret text - a token such as an API token (e.g. a GitHub personal access token),
+        Username and password - which could be handled as separate components or as a colon separated string in the format username:password (read more about this in Handling credentials),
+        Secret file - which is essentially secret content in a file,
+        SSH Username with private key - an SSH public/private key pair,
+        Certificate - a PKCS#12 certificate file and optional password, or
+        Docker Host Certificate Authentication credentials.
+    </aside>
+</section>
+<section>
+    <h3>Ejercicio: Creación de una credencial para GitHub</h3>
+</section>
+<section data-background-image="https://images.alphacoders.com/814/814360.jpg">
+    <h1>Hablemos de Jobs</h1>
+</section>
+<section>
+    <h2>¿Qué es un Job en Jenkins?</h2>
+    <p>
+        Los jobs o tareas, son la unidad mínima en Jenkins, en términos simples es el conjunto de actividades programadas
+        para cumplir un objetivo.
+    </p>
+</section>
+<section>
+    <h1>Tipos de Jobs</h1>
+</section>
+<section data-background-image="https://coworkingfy.com/wp-content/uploads/2020/01/concepto-tormenta-ideas.jpg">
+    <h3 style="color:black">Free style</h3>
+    <aside class="notes">
+        Ejecuta el proyecto combinando cualquier tipo de repositorio de software con cualquier modo de construcción o ejecución.
+    </aside>
+</section>
+<section data-background-image="https://cdn.educba.com/academy/wp-content/uploads/2018/04/Maven-Interview-Questions.jpg">
+</section>
+<section data-background-image="https://comquent.de/wp-content/uploads/CQ-Pipeline-Kurs.png">
+</section>
+<section data-background-image="https://www.digitalhrtech.com/wp-content/uploads/2019/04/Plaatje-Neelie-e1554725042803.png">
+    <h3 style="color:black">External Job</h3>
+    <aside class="notes">
+        External Job
+        
+        Este tipo de tarea permite registar la ejecución de procesos que se ejecutan externamente a Jenkins, incluso en máquinas remotas. Está diseñado para que puedas utilizar Jenkins como un panel de control para tus sistemas de automatización de procesos.
+    </aside>
+</section>
+<section data-background-image="https://pixoestudio.com/images/posts/git.jpg">
+    <aside class="notes">
+        Multibranch pipeline
+
+        Ejecuta un proyecto maven. Jenkins es capaz de aprovechar la configuracion presente en los ficheros POM
+    </aside>
+</section>
+<section>
+    <h2>Ejercicio: Mi primer Job</h2>
+</section>
