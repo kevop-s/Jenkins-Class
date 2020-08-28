@@ -48,6 +48,5 @@ La implementación continua es una extensión de CD, es un proceso que automatiz
 
 Debe tener en cuenta todos los pasos para restaurar la aplicación en caso de un problema de producción, alternancia de características (o indicadores de características), desactivar y activar características bajo demanda.
 
-Otra técnica consiste en utilizar una infraestructura de producción blue-green, que consta dedos entornos de producción, uno azul y otro verde. Primero implementamos en el entorno azul, luego en el verde; esto asegurará que no se requiera tiempo de inactividad:
 
- 
+Otra técnica consiste en utilizar una infraestructura de producción blue-green, que consta dedos entornos de producción, uno azul y otro verde. Primero implementamos en el entorno azul, luego en el verde; esto asegurará que no se requiera tiempo de inactividad:
