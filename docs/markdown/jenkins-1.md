@@ -1,5 +1,4 @@
 ## Introducción a DevOps
-        - Ïndice
 
 
 ## Introducción
@@ -23,7 +22,7 @@ La cultura DevOps es un conjunto de prácticas que reducen las barreras entre lo
 
 
 ### Ciclo de vida en Devops
-![Ciclo de vida](images/DevOpsLC.png)
+![Ciclo de vida](markdown/images/DevOpsLC.png)
 
 
 ## Integración continua (CI) 
@@ -39,7 +38,7 @@ Los cambios individuales deberán integrarse con los demás cambios del equipo d
 En esta pracrica se busca la aplicación automática en uno o más entornos que no son de producción, lo que se denomina (QA/Preprod). El CD a menudo comienza con un paquete de aplicación preparado por CI, que se instalará de acuerdo con una lista de tareas automatizadas. Estas tareaspueden ser de cualquier tipo: descomprimir, detener y reiniciar el servicio, copiar archivos, reemplazar la configuración, etc. La ejecución de pruebas funcionales y de aceptación también se puede realizar durante el proceso de CD.
 
 
-![cidi-mapa](cidi-mapa.png)
+![cidi-mapa](markdown/cidi-mapa.png)
 
 
 ## Implementación continua 
