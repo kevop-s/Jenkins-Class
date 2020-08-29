@@ -1,0 +1,112 @@
+<section>
+    <h1>Notificaciones y Pipelines</h1>
+</section>
+<section data-background-image="https://www.mdirector.com/storage/2019/09/smtp-server.jpg">
+    <h2 style="color:gray">Smtp</h2>
+</section>
+<section>
+    <h3>¿Qué es el protocolo SMTP?</h3>
+    <p>
+        Segun Wikipedia...
+    </p>
+    <blockquote>
+        El protocolo para transferencia simple de correo (en inglés Simple Mail Transfer Protocol o SMTP) es un protocolo de red utilizado para el intercambio de mensajes de correo electrónico entre computadoras u otros dispositivos (PDA, teléfonos móviles, impresoras, etc).
+    </blockquote>
+</section>
+<section>
+    <h3>Ejercicio: Configuración de notificaciones via correo electronico</h3>
+    <aside class="notes">
+        Servidor de correo saliente (SMTP): smtp.gmail.com / SMTP Server
+        User name: kevops97@gmail.com thyqmjgwjvwimhlo / SMTP Username SMTP Password
+        Password: **** 
+        Use SSL : Checked /	Use SSL
+        SMTP Port: 465 / SMTP Port
+        Ejecuta un proyecto maven. Jenkins es capaz de aprovechar la configuracion presente en los ficheros POM
+    </aside>
+</section>
+<section>
+    <h3>Ejercicio: Enviar un notificacion desde un Job</h3>
+</section>
+<section>
+    <h2>Variables en Jenkins</h2>
+    <p>
+        <a href="https://jenkins.kmmx.kevops.xyz/env-vars.html/">Lista de variables predefinidas en Jenkins</a>
+    </p>
+</section>
+<section>
+    <h3>Ejercicio: Job con variables predefinidas</h3>
+</section>
+<section>
+    <h2>Generando nuestras propias variables</h2>
+</section>
+<section data-background-image="https://i.ytimg.com/vi/0bqx4LeWRO0/maxresdefault.jpg">
+    <h3>Pipelines</h3>
+</section>
+<section>
+    <p>
+        Utilizando pipelines y Jenkins, podemos definir el ciclo de vida completo de una aplicación (descargar código, compilar, test, desplegar, etc.) mediante código.
+    </p>
+    <p>
+            De esta forma, resulta mucho más sencillo replicar los diferentes pasos con distintas aplicaciones y gestionar mejor los cambios en cada paso.
+    </p>
+</section>
+<section>
+    <h3>Ventajas</h3>
+    <ul>
+        <li>Definir de forma sencilla:</li>
+        <ul>
+            <li>Parámetros de entrada</li>
+            <li>Variables de entorno y credenciales</li>
+            <li>Opciones como un timeout, retry o descartar builds</li>
+        </ul>
+        <li>Enviar mensajes o hacer alguna acción post-build dependiendo del resultado de la ejecución del pipeline.</li>
+        <li>Saltar alguna fase dependiendo del entorno, la rama que ejecutemos, etc. mediante expresiones boleadas.</li>
+    </ul>
+</section>
+<section>
+    <h2>Pipelines Declarativos</h2>
+    <p>
+        Un pipeline declarativo es aquel que podemos crear, editar o configurar mediante una estructura definida que nos ayuda a entender y predecir los pasos del pipeline. 
+    </p>
+</section>
+<section>
+    <h2>Pipelines de tipo script o Scripted</h2>
+</section>
+<section data-markdown
+         data-separator="^\n\n\n"
+         data-separator-vertical="^\n\n">
+    <textarea data-template>
+### SCRIPTED PIPELINE vs DESCRIPTED PIPELINE
+|SCRIPTED PIPELINE | DESCRIPTED PIPELINE |
+|----|-----|
+| Modelo de programación imperativo               | Modelo de programación declarativo                                    |
+| Entorno de programación con todas las funciones | Sintaxis más simple y pragmática para la creación de Jenkins pipeline |
+
+
+
+|SCRIPTED PIPELINE | DESCRIPTED PIPELINE |
+|----|-----|
+| Se declara y ejecuta mediante nodos             | Se declara y ejecuta mediante el comando pipeline y los diferentes stages, stage, steps y step |
+| No hay muchas limitaciones para usuarios expertos y requerimientos complejos | La mejor opción para el desarrollo de estrategias de CI y CD con Pipelines |
+    </textarea>
+</section>
+<section>
+    <h3>Ejemplo de un Pipeline Scripted</h3>
+    <pre><code data-line-numbers="2,12|3,5,6,8,9,11|4,7,10">
+node { 
+    stage("Build") { 
+        echo "Etapa de Building"
+    } 
+    stage("Testing") { 
+        echo "Etapa de Testing"
+    } 
+    stage("Deploy") { 
+        echo "Etapa de Deploy"
+    } 
+}
+        </code>
+    </pre>
+</section>
+<section>
+    <h3>Ejercicio: Ejecución Pipelne Scripted</h3>
+</section>
