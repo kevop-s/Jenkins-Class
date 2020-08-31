@@ -53,12 +53,46 @@
 </section>
 <section>
     <i>Scripted Pipeline</i>
+    <h2>Archivo Jenkinsfile</h2>
+    <p>La definición de un pipeline Jenkins, se escribe en un fichero de texto llamado Jenkinsfile.</p>
+</section>
+<section>
+    <h2>Estructura de un Pipeline Scripted</h2>
+    <pre>
+    <code data-line-numbers="1,8|2,3|5-7|10-12">node {     
+    // Instrucciones
+    echo "Texto"
+
+    stage(){
+        // Codigo
+    }
+}
+
+node {
+
+}</code>
+    </pre>
+</section>
+<section>
+    <h2>Comentarios</h2>
+    <pre>
+    <code data-line-numbers="1|3-6">//Este es un comentario de linea
+node { 
+    /* Este es
+    un comentario 
+    en bloque
+    */
+}
+    </code>
+    </pre>
+</section>
+<section>
     <h3>Variables dentro de un Pipeline</h3>
 </section>
 <section>
     <h2>Variables Globales</h2>
     <pre>
-    <code data-line-numbers="1|4|7">MI_VARIABLE = "texto"
+    <code data-line-numbers="1|4|7|8">MI_VARIABLE = "texto"
 node { 
     stage("Variables") { 
         echo "${MI_VARIABLE}"
@@ -75,14 +109,15 @@ node {
     <h2>Variables Locales</h2>
     <pre>
     <code data-line-numbers="3,4|7">node {
-        stage("Variables") {
-            def variable_local = "mivariable" 
-            echo "${variable_local}"
-        }
-        stage("Variables de entorno") { 
-            echo "${variable_local}"
-        }
+    stage("Variables") {
+        def variable_local = "mivariable" 
+        echo "${variable_local}"
+        echo variable_local
     }
+    stage("Variables de entorno") { 
+        echo "${variable_local}"
+    }
+}
     </code>
     </pre>
 </section>
@@ -107,10 +142,10 @@ node {
     <h2>Parametros</h2>
     <pre>
     <code data-line-numbers="3">node {
-        stage("Parametros") { 
-            echo "${MI_PARAMETRO}"
-        }
+    stage("Parametros") { 
+        echo "${MI_PARAMETRO}"
     }
+}
         </code>
         </pre>
 </section>
@@ -118,30 +153,43 @@ node {
     <h2>Variables numericas y operadores</h2>
     <pre>
     <code data-line-numbers="3,4|7,8">node{
-        stage("Declaracion"){
-            NUMERO_UNO = 3
-            NUMERO_DOS = 4
-        }
-        stage("Suma"){
-            TOTAL = "${NUMERO_UNO}" + "${NUMERO_DOS}"
-            echo "${TOTAL}"
-        }
+    stage("Declaracion"){
+        NUMERO_UNO = 3
+        NUMERO_DOS = 4
     }
+    stage("Suma"){
+        TOTAL = "${NUMERO_UNO}" + "${NUMERO_DOS}"
+        echo "${TOTAL}"
+    }
+}
     </code>
     </pre>
 </section>
 <section>
     <pre>
     <code data-line-numbers="3,4|7,8">node{
-        stage("Declaracion"){
-            NUMERO_UNO = 3
-            NUMERO_DOS = 4
-        }
-        stage("Suma"){
-            TOTAL = "${NUMERO_UNO}".toInteger() + "${NUMERO_DOS}".toInteger()
-            echo "${TOTAL}"
-        }
+    stage("Declaracion"){
+        NUMERO_UNO = 3
+        NUMERO_DOS = 4
     }
+    stage("Suma"){
+        TOTAL = "${NUMERO_UNO}".toInteger() + "${NUMERO_DOS}".toInteger()
+        echo "${TOTAL}"
+    }
+}
+    </code>
+    </pre>
+</section>
+<section>
+    <pre>
+    <code data-line-numbers="3,4|5|6">node{
+    stage("Suma"){
+        def NUMERO_UNO = 5
+        def NUMERO_DOS = 6
+        TOTAL = NUMERO_UNO + NUMERO_DOS
+        echo "${TOTAL}"
+    }
+}
     </code>
     </pre>
 </section>
@@ -152,13 +200,13 @@ node {
     <h2>Funciones dentro de un pipeline</h2>
     <pre>
     <code data-line-numbers="1-3|6">def imprime(mensaje){
-            echo "${mensaje}"
-        }
-    node{
-        stage("Funcion"){
-            imprime("Mensaje desde una funcion")
-        }
+    echo "${mensaje}"
+}
+node{
+    stage("Funcion"){
+        imprime("Mensaje desde una funcion")
     }
+}
     </code>
     </pre>
 </section>
@@ -167,14 +215,14 @@ node {
     <i>Continuación</i>
     <pre>
     <code data-line-numbers="1-3|6">def imprime(mensaje){
-            return "Mi texto: ${mensaje}"
-        }
-    node{
-        stage("Funcion"){
-            def resultado_funcion = imprime("Mensaje desde una funcion")
-            echo "${resultado_funcion}"
-        }
+    return "Mi texto: ${mensaje}"
+}
+node{
+    stage("Funcion"){
+        def resultado_funcion = imprime("Mensaje desde una funcion")
+        echo "${resultado_funcion}"
     }
+}
     </code>
     </pre>
 </section>
@@ -185,17 +233,83 @@ node {
     <h2>Condicionando la ejecución de un Pipeline</h2>
     <pre>
     <code data-line-numbers="7">node{
-        stage("Declaracion de variables"){
-            VARIABLE_UNO = "texto"
-            VARIABLE_DOS = "dos"
-        }
-        stage("Continuacion"){
-            input(message: "Deseas continuar?", ok: "Si")
-        }
-        stage("Etapa final"){
-            echo "etapa"
-        }
+    stage("Declaracion de variables"){
+        VARIABLE_UNO = "texto"
+        VARIABLE_DOS = "dos"
     }
+    stage("Continuacion"){
+        input(message: "Deseas continuar?", ok: "Si")
+    }
+    stage("Etapa final"){
+        echo "etapa"
+    }
+}
     </code>
     </pre>
+</section>
+<section>
+    <h2>Condicionales</h2>
+    <ul>
+        <li>
+            And ---> &&
+        </li>
+        <li>
+            Or  ---> ||
+        </li>
+        <li>
+            Not ---> !
+        </li>
+        <li>
+            ==
+        </li>
+        <li>
+            !=
+        </li>
+    </ul>
+</section>
+<section>
+    <h2>Condicionales</h2>
+    <pre>
+    <code data-line-numbers="3-5">node{
+    stage("Condicionales"){
+        if( /* Expresion a evaluar */ ){
+            // Codiggo
+        }
+    }
+}
+    </code>
+    </pre>
+</section>
+<section>
+    <h2>Condicionales</h2>
+    <pre>
+    <code data-line-numbers="3-5">node{
+    stage("Condicionales"){
+        if( /* Expresion a evaluar */ ){
+            // Codigo
+        }else{
+            // Codigo
+        }
+    }
+}
+    </code>
+    </pre>
+</section>
+<section>
+    <h2>Condicionales</h2>
+    <pre>
+    <code data-line-numbers="3-5">node{
+    stage("Condicionales"){
+        if( /* Expresion a evaluar */ ){
+            // Codigo
+        }else if ( /* Expresion a evaluar */ ){
+            // Codigo
+        }
+    }
+}
+    </code>
+    </pre>
+</section>
+<section>
+    <h2>Ejercicio: Condicionales en Jenkins</h2>
 </section>

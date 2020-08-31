@@ -1,0 +1,203 @@
+<section>
+    <h3>Pipelines en Jenkins</h3>
+</section>
+<section>
+    <h2>Función Retry</h2>
+    <pre>
+    <code data-line-numbers="3-5">node{
+    stage("Retry"){
+        retry(/* Número de intentos */){
+            // Código
+        }
+    }
+}
+    </code>
+    </pre>
+</section>
+<section>
+    <h1>Pipelines Declarativos</h1>
+</section>
+<section>
+    <h2>Estructura de un Pipeline declarativo</h2>
+    <pre>
+    <code data-line-numbers="1,10|2|3,9|4,8|5,7">pipeline{
+    agent any
+    stages{
+        stage("Stage 1"){
+            steps{
+                // Codigo
+            }
+        }
+    }
+}
+    </code>
+    </pre>
+</section>
+<section>
+    <h2>Variables Globales</h2>
+    <pre>
+    <code data-line-numbers="1|7|12,13">VARIABLE = "mi variable"
+pipeline{
+    agent any
+    stages{
+        stage("Stage 1"){
+            steps{
+                echo "${VARIABLE}"
+            }
+        }
+        stage("Stage 2"){
+            steps{
+                VARIABLE = "mi nueva variable"
+                echo "${VARIABLE}"
+            }
+        }
+    }
+}
+    </code>
+    </pre>
+</section>
+<section>
+    <h2>Variables Locales</h2>
+    <i>Bloque script</i>
+    <pre>
+    <code data-line-numbers="6,7|12">pipeline{
+    agent any
+    stages{
+        stage("Stage 1"){
+            steps{
+                script {
+                    def VARIABLE = "mi variable"
+                    echo "${VARIABLE}"
+                }
+            }
+        }
+        stage("Stage 2"){
+            steps{
+                echo "${VARIABLE}"
+            }
+        }
+    }
+}
+    </code>
+    </pre>
+</section>
+<section>
+    <h2>Variables de Entorno</h2>
+    <pre>
+    <code data-line-numbers="6,7|12">pipeline{
+    agent any
+    environment{
+        VARIABLE_ENTORNO = "mi variable entorno"
+    }
+    stages{
+        stage("Stage 1"){
+            steps{
+                echo "${env.VARIABLE_ENTORNO}"
+            }
+        }
+    }
+}
+    </code>
+    </pre>
+</section>
+<section>
+    <h2>Parametros</h2>
+    <pre>
+    <code data-line-numbers="6,7|12">pipeline{
+    agent any
+    stages{
+        stage("Stage 1"){
+            steps{
+                echo "${MI_PARAMETRO}"
+            }
+        }
+    }
+}
+    </code>
+    </pre>
+</section>
+<section>
+    <h2>Funciones</h2>
+    <pre>
+    <code data-line-numbers="6,7|12">def imprime(mensaje){
+    echo "${mensaje}"
+}
+pipeline{
+    agent any
+    stages{
+        stage("Stage 1"){
+            steps{
+                imprime("Mi mensaje")
+            }
+        }
+    }
+}
+    </code>
+    </pre>
+</section>
+<section>
+    <h3>Ejercicio: Calculadora</h3>
+</section>
+<section>
+    <h2>Clonando un repositorio GitHub</h2>
+    <i>Requisito previo: Creación de una credencial para Git</i>
+    <pre>
+    <code data-line-numbers="6,7|12">pipeline{
+    agent any
+    stages{
+        stage("Git Clone"){
+            steps{
+                git credentialsId: "jenkins-git-key" , url: "git@github.com:kevop-s/Jenkins-Class.git", branch: "master"
+                sh "ls"
+            }
+        }
+    }
+}
+    </code>
+    </pre>
+</section>
+<section>
+    <h2>Etapas Post ejecución</h2>
+    <a href="https://www.jenkins.io/doc/book/pipeline/syntax/#post">Pipelines Post</a>
+    <pre>
+    <code data-line-numbers="6,7|12">pipeline{
+    agent any
+    stages{
+        stage("Stage 1"){
+            steps{
+                echo "Stage"
+            }
+        }
+    }
+    post { 
+        always { 
+            echo 'always'
+        }
+        failure{
+            echo 'failure'
+        }
+    }
+}
+    </code>
+    </pre>
+</section>
+<section>
+    <h2>Envío de un correo</h2>
+    <i>Requisito previo: Configuracion smtp</i>
+    <pre>
+    <code data-line-numbers="6,7|12">pipeline{
+    agent any
+    stages{
+        stage("Stage 1"){
+            steps{
+            mail to: "example@hotmail.com",
+                cc : "example@gmail.com",
+                subject: "Test",
+                body: "Esto es un ejemplo"
+            }
+        }
+    }
+}
+    </code>
+    </pre>
+</section>
