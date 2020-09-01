@@ -1,3 +1,6 @@
+(Dockerlabs)[https://github.com/collabnix/dockerlabs]
+
+
 # Dockerfile 
 [Documentacion](https://docs.docker.com/engine/reference/builder/)
 
@@ -40,7 +43,7 @@ EXPOSE 5050/udp
 
 ## COPY 
 Copia archivos de la host a la imagen 
-COPY testfile.txt /tmp/
+``COPY testfile.txt /tmp/``
 
 
 ## Workdir
@@ -48,7 +51,7 @@ Campia de directorio de trabajo
 ```WORKDIR /path/to/workdir``` 
 
 ## ENTRYPOINT 
-´´ENTRYPOINT ["top", "-b"]´´
+```ENTRYPOINT ["top", "-b"]```
 
 ## Docker run 
 [Documentacion](https://docs.docker.com/engine/reference/commandline/run/)
