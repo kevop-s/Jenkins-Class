@@ -58,5 +58,5 @@ Campia de directorio de trabajo
 - -d Segundo plano 
 - --privileged	 ontenedor privilegiado 
 -v --volume 
-  ``<dir:host>:<dir:container>:permisos``
--p ´`puertoHost:puertoContenedor`` 
+``<dir:host>:<dir:container>:permisos``
+- p ´`puertoHost:puertoContenedor`` 
