@@ -49,3 +49,14 @@ Campia de directorio de trabajo
 
 ## ENTRYPOINT 
 ´´ENTRYPOINT ["top", "-b"]´´
+
+## Docker run 
+[Documentacion](https://docs.docker.com/engine/reference/commandline/run/)
+
+- -t pseudo terminal -tty
+- -i mantener flujo STDIN abierto ( interactuar)
+- -d Segundo plano 
+- --privileged	 ontenedor privilegiado 
+-v --volume 
+  ``<dir:host>:<dir:container>:permisos``
+-p ´`puertoHost:puertoContenedor`` 
