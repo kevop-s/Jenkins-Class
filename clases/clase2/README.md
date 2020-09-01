@@ -59,4 +59,4 @@ Campia de directorio de trabajo
 - --privileged	 ontenedor privilegiado 
 -v --volume 
 ``<dir:host>:<dir:container>:permisos``
-- p ´`puertoHost:puertoContenedor`` 
+- p `puertoHost:puertoContenedor`` 
