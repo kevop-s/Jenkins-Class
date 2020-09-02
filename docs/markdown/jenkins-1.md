@@ -16,10 +16,20 @@ DevOps ofrece frameworks de procesos aumentados con herramientas de código abie
 La cultura DevOps es un conjunto de prácticas que reducen las barreras entre los desarrolladores, que quieren innovar y entregar más rápido, por un lado y, por otro lado, las operaciones, que quieren garantizar la estabilidad de los sistemas de producción y la calidad de los cambios al sistema.
 
 
+# Principios
+
+- Desarrolle y pruebe contra sistemas similares a la producción
+- Implemente con procesos confiables y repetibles
+- Monitorear y validar la calidad operativa
+- Amplifica los bucles de retroalimenta
+
+
+
 - Despliegues más frecuentes mediante la integración y la entrega continua  
 - Monitoreo de la infraestructura y aplicaciones  
 - Cultura de la colaboración (Equipos multidiciplinarios ) 
 - Uso de metodologías ágiles de desarrollo 
+
 
 
 ### Ciclo de vida en Devops
@@ -137,6 +147,10 @@ Jenkins es un servidor de automatización de código abierto. Construido con Jav
 ## Componentes de Jenkins
 
 ![Arquitectura](markdown/images/JenkinsArquitectura.png)
+
+
+![Arquitectura](https://ricardogeek.com/wp-content/uploads/2018/07/Untitled-Diagram.png)
+
 
 
 ## Master  
