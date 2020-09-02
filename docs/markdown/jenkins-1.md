@@ -150,7 +150,6 @@ Jenkins es un servidor de automatización de código abierto. Construido con Jav
 ![Arquitectura](https://ricardogeek.com/wp-content/uploads/2018/07/Untitled-Diagram.png)
 
 
-
 ## Master  
 
 Un Master de Jenkins es el sistema de control principal para una instancia de Jenkins. Tiene acceso completo a toda la configuración y opciones de Jenkins y a la lista completa de trabajos.  
