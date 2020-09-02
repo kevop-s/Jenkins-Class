@@ -24,7 +24,6 @@ La cultura DevOps es un conjunto de prácticas que reducen las barreras entre lo
 - Amplifica los bucles de retroalimenta
 
 
-
 - Despliegues más frecuentes mediante la integración y la entrega continua  
 - Monitoreo de la infraestructura y aplicaciones  
 - Cultura de la colaboración (Equipos multidiciplinarios ) 
