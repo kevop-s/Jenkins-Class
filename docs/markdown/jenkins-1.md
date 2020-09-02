@@ -30,7 +30,6 @@ La cultura DevOps es un conjunto de prácticas que reducen las barreras entre lo
 - Uso de metodologías ágiles de desarrollo 
 
 
-
 ### Ciclo de vida en Devops
 ![Ciclo de vida](markdown/images/DevOpsLC.png)
 
