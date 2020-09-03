@@ -20,3 +20,14 @@
 # Post buid 
 ## 5. Generacion de reporte
 ## 6. envio de notificacion 
+# Pre build
+## Pull request al repositorio
+# build job
+## 1. Pruebas de calidad estatico
+## 2. construccion de la imgen 
+## 3. Compilacion dentro de la imagen
+## 4. Pruebas unitarias
+## 5. Publicacion de la imagen probada  en Regestry 
+# Post buid 
+## 5. Generacion de reporte
+## 6. envio de notificacion 
