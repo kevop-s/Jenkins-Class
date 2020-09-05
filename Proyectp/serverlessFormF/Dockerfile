@@ -1,9 +1,14 @@
 FROM node:12.18-stretch
-COPY . .
+
+COPY front /front/
+
+COPY docker-entrypoint.sh /sbin/
+
 WORKDIR /front
-RUN npm install  
+
+RUN npm install && \
+    chmod +x /sbin/docker-entrypoint.sh
+
 EXPOSE 3000
 
-CMD npm start 
- 
-
+ENTRYPOINT [ "/sbin/docker-entrypoint.sh" ]

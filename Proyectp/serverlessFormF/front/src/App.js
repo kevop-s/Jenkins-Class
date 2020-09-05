@@ -10,7 +10,12 @@ class Contact extends Component {
       message: '',
       email: '',
       sent: false,
-      buttonText: 'Send Message'
+      buttonText: 'Send Message',
+      backHost: process.env.REACT_APP_BACK_URL
+  }
+
+  headers = {
+    "Access-Control-Allow-Origin": "*"
   }
 
   render() {
@@ -47,11 +52,12 @@ class Contact extends Component {
         message: this.state.message
     }
     
-    axios.post('https://serverless-form-b.vercel.app/', data)
+    axios.post(this.state.backHost, data,{headers: this.headers})
     .then( res => {
         this.setState({ sent: true }, this.resetForm())
     })
     .catch( () => {
+      console.log("BackHost: %s",process.env.REACT_APP_BACK_URL)
       console.log('Message not sent')
     })
   }

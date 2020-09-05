@@ -5,38 +5,40 @@ const cors = require('cors');
 
 const app = express();
 
-const port = 4444;
+const port = process.env.BACK_PORT;
+const portSmtp = process.env.SMTP_PORT;
+const hostSmtp = process.env.SMTP_HOST;
+const userSmtp = process.env.SMTP_USER;
+const passSmtp = process.env.SMTP_PASS;
+const serviceSmtp = process.env.SMTP_SERVICE;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(cors());
+app.use(cors({
+  origin: '*'
+}));
 
 app.listen(port, () => {
-  console.log('We are live on port 4444');
+  console.log('We are live on port %d',port);
 });
-
-
-// app.get('/', (req, res) => {
-//   res.send('Welcome to my api');
-// })
 
 app.post('/', (req,res) => {
   var data = req.body;
 
 var smtpTransport = nodemailer.createTransport({
-  service: 'Gmail',
-  port: 465,
+  service: serviceSmtp,
+  port: portSmtp,
   auth: {
-    user: 'soymarcochavez@gmail.com',
-    pass: 'hatomoZ0'
+    user: userSmtp,
+    pass: passSmtp
   }
 });
 
 var mailOptions = {
-  from: 'soymarcochavez@gmail.com',
+  from: userSmtp,
   to: data.email,
-  subject: 'test',
+  subject: 'Test Email',
   html: `<p>${data.name}</p>
           <p>${data.email}</p>
           <p>${data.message}</p>`
