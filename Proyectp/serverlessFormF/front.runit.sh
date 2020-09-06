@@ -7,7 +7,7 @@
 
 SERVERLESSF_CONTAINER="serverles-front"
 SERVERLESSF_PORT="3000"
-SERVERLESSF_REACT_APP_BACK_URL="https://back-mail.kmmx.kevops.kyz"
+SERVERLESSF_REACT_APP_BACK_URL="https://mail-back.kmmx.kevops.kyz"
 
 docker run -itd --name $SERVERLESSF_CONTAINER \
     -p $SERVERLESSF_PORT:3000 \
