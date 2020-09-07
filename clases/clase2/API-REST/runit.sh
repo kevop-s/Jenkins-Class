@@ -2,7 +2,7 @@
 
 docker build -t flask-api .
 
-docker run -itd -p 8080:5000 flask-api
+docker run -itd -p 5000:5000 flask-api
 
 #GET todos los items 
 curl http://localhost:5000/todos

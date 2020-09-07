@@ -2,8 +2,6 @@ from flask import Flask
 from flask_restful import reqparse, abort, Api, Resource
 from flask_mongoengine import MongoEngine, MongoEngineSessionInterface
 
-from database.db import initialize_db
-from database.models import Usuario
 
 #MONGODB_HOST = os.environ["MONGODB_HOST"]
 #MONGODB_PORT = os.environ["MONGODB_PORT"]
