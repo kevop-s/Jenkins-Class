@@ -1,40 +1,112 @@
-from flask import Flask, jsonify, request
+from flask import Flask
+from flask_restful import reqparse, abort, Api, Resource
+from flask_mongoengine import MongoEngine, MongoEngineSessionInterface
+
+from database.db import initialize_db
+from database.models import Usuario
+
+#MONGODB_HOST = os.environ["MONGODB_HOST"]
+#MONGODB_PORT = os.environ["MONGODB_PORT"]
+#MONGO_INITDB_ROOT_USERNAME = os.environ["MONGO_INITDB_ROOT_USERNAME"]
+#MONGO_INITDB_ROOT_PASSWORD = os.environ["MONGO_INITDB_PASSWORD"]
+
+MONGODB_HOST = 'mongodb://0.0.0.0/'
+MONGODB_PORT = '27017'
+MONGO_INITDB_ROOT_USERNAME='mongoadmin'
+MONGO_INITDB_ROOT_PASSWORD='secret'
+
+CONFIG_MONGO = {
+    'db':'test',
+    'host': MONGODB_HOST,
+    'port': MONGODB_PORT,
+    'username':MONGO_INITDB_ROOT_USERNAME,
+    'password':MONGO_INITDB_ROOT_PASSWORD
+}
+
+#print(CONFIG_MONGO)
+
+TODOS = {
+    'todo1': {'task': 'build an API'},
+    'todo2': {'task': '?????'},
+    'todo3': {'task': 'profit!'},
+}
+errors = {
+    'UserAlreadyExistsError': {
+        'message': "A user with that username already exists.",
+        'status': 409,
+    },
+    'ResourceDoesNotExist': {
+        'message': "A resource with that ID no longer exists.",
+        'status': 410,
+        'extra': "Any extra information you want.",
+    },
+}
+
+
 
 app = Flask(__name__)
+api = Api(app, errors=errors)
 
-movies = [
-    {
-        "name": "The Shawshank Redemption",
-        "casts": ["Tim Robbins", "Morgan Freeman", "Bob Gunton", "William Sadler"],
-        "genres": ["Drama"]
-   },
-    {
-       "name": "The Godfather ",
-       "casts": ["Marlon Brando", "Al Pacino", "James Caan", "Diane Keaton"],
-       "genres": ["Crime", "Drama"]
-    }
-]
-@app.route('/movies')
-def hello():
-    return jsonify(movies)
+app.config['MONGODB_SETTINGS']  = CONFIG_MONGO
 
-@app.route('/movies', methods=['POST'])
-def add_movie():
-    movie = request.get_json()
-    movies.append(movie)
-    return {'id': len(movies)}, 200
+#db = MongoEngine(app)
+#app.session_interface = MongoEngineSessionInterface(db)
 
-@app.route('/movies/<int:index>', methods=['PUT'])
-def update_movie(index):
-    movie = request.get_json()
-    movies[index] = movie
-    return jsonify(movies[index]), 200
+#initialize_db(app)
 
-@app.route('/movies/<int:index>', methods=['DELETE'])
-def delete_movie(index):
-    movies.pop(index)
-    return 'None', 200
+def abort_if_todo_doesnt_exist(todo_id):
+    if todo_id not in TODOS:
+        abort(404, message="Todo {} doesn't exist".format(todo_id))
+        #abort(e.code, str(e))
+
+parser = reqparse.RequestParser()
+parser.add_argument('task')
 
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int("5000"), debug=True)
+# Todo
+# shows a single todo item and lets you delete a todo item
+class Todo(Resource):
+    def get(self, todo_id):
+        abort_if_todo_doesnt_exist(todo_id)
+        return TODOS[todo_id]
+
+    def delete(self, todo_id):
+        abort_if_todo_doesnt_exist(todo_id)
+        del TODOS[todo_id]
+        return '', 204
+
+    def put(self, todo_id):
+        args = parser.parse_args()
+        task = {'task': args['task']}
+        TODOS[todo_id] = task
+        return task, 201
+
+
+# TodoList
+# shows a list of all todos, and lets you POST to add new tasks
+class TodoList(Resource):
+    def get(self):
+        return TODOS
+
+    def post(self):
+        args = parser.parse_args()
+        todo_id = int(max(TODOS.keys()).lstrip('todo')) + 1
+        todo_id = 'todo%i' % todo_id
+        TODOS[todo_id] = {'task': args['task']}
+        return TODOS[todo_id], 201
+
+class Barra(Resource):
+    def get(self):
+        try:
+            return {'hello': 'world'}, 200
+        except APIException as e:
+            abort(e.code, str(e))
+##
+## Actually setup the Api resource routing here
+##
+api.add_resource(TodoList, '/todos')
+api.add_resource(Todo, '/todos/<todo_id>')
+api.add_resource(Barra, '/')
+
+if __name__ == '__main__':
+    app.run(debug=True,host='0.0.0.0')
