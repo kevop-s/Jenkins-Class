@@ -10,10 +10,10 @@ DOCKER_IMAGE                    ="jenkins-serverlessformf"
 
 SERVERLESSF_CONTAINER           ="serverless-front"
 SERVERLESSF_PORT                ="3000"
-SERVERLESSF_REACT_APP_BACK_URL  ="https://back-mail.kmmx.kevops.xyz"
+SERVERLESSF_REACT_APP_BACK_URL  ="https://domain.xyz"
 
-EMAIL_TO                        ="kev.gomez97@hotmail.com"
-EMAIL_CC                        ="carloszrm90@gmail.com"
+EMAIL_TO                        ="xxxxxx@hotmail.com"
+EMAIL_CC                        ="yyyyyy@gmail.com"
 
 // Deploy
 pipeline{
