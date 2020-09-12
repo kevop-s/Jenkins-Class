@@ -12,12 +12,12 @@ SERVERLESSB_CONTAINER           ="serverles-back"
 SERVERLESSB_BACK_PORT           ="4444"
 SERVERLESSB_SMTP_PORT           ="465"
 SERVERLESSB_SMTP_HOST           ="smtp.gmail.com"
-SERVERLESSB_SMTP_USER           ="kevops97@gmail.com"
-SERVERLESSB_SMTP_PASS           ="thyqmjgwjvwimhlo"
+SERVERLESSB_SMTP_USER           ="xxxx@gmail.com"
+SERVERLESSB_SMTP_PASS           ="pppppppppp"
 SERVERLESSB_SMTP_SERVICE        ="Gmail"
 
-EMAIL_TO                        ="kev.gomez97@hotmail.com"
-EMAIL_CC                        ="carloszrm90@gmail.com"
+EMAIL_TO                        ="xxxxxxx@hotmail.com"
+EMAIL_CC                        ="yyyyyyyy@gmail.com"
 
 // Deploy
 pipeline{
